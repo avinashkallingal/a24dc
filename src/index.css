@@ -1,0 +1,257 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Space+Mono:wght@400;700&family=Syne:wght@400;600;700;800&display=swap');
+
+:root {
+  --bg-sand: #eae2d3;
+  --bg-sand-light: #f5efe4;
+  --bg-sand-card: #faf7f0;
+  --bg-sand-dark: #ded4c3;
+  --text-main: #2b2926;
+  --text-muted: #6b655b;
+  --text-light: #9c9486;
+  --accent-gold: #c29b4e;
+  --accent-gold-light: #e5cd96;
+  --accent-gold-hover: #aa853a;
+  --border-subtle: rgba(43, 41, 38, 0.08);
+  --border-active: rgba(43, 41, 38, 0.28);
+  --grid-line: rgba(43, 41, 38, 0.04);
+  --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-display: 'Syne', sans-serif;
+  --font-mono: 'Space Mono', monospace;
+  --shadow-sm: 0 4px 12px rgba(43, 41, 38, 0.03);
+  --shadow-md: 0 12px 35px rgba(43, 41, 38, 0.06);
+  --shadow-lg: 0 25px 60px rgba(43, 41, 38, 0.1);
+  --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  font-family: var(--font-body);
+  background-color: var(--bg-sand);
+  color: var(--text-main);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Background Blueprint Grid Lines Overlay */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: 
+    linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+  background-size: 80px 80px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+input, textarea, select {
+  font-family: inherit;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-sand);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--bg-sand-dark);
+  border-radius: 3px;
+}
+
+/* Monospace Architectural Metadata Label */
+.arch-tag {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent-gold);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.arch-tag::before {
+  content: '[';
+  color: var(--text-light);
+}
+
+.arch-tag::after {
+  content: ']';
+  color: var(--text-light);
+}
+
+/* Architectural Index Number (01, 02, 03) */
+.section-index {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--accent-gold);
+  letter-spacing: 0.1em;
+  margin-bottom: 8px;
+  display: block;
+}
+
+/* Inline Edit Highlight Styles */
+.editable-region {
+  position: relative;
+  transition: var(--transition-smooth);
+}
+
+.edit-mode-active .editable-region {
+  outline: 1.5px dashed var(--accent-gold);
+  outline-offset: 4px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.edit-mode-active .editable-region:hover {
+  outline: 2px solid #2b2926;
+  background: rgba(194, 155, 78, 0.12);
+}
+
+.edit-badge {
+  position: absolute;
+  top: -12px;
+  right: -10px;
+  background: #2b2926;
+  color: #ffffff;
+  font-size: 9px;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 4px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  z-index: 20;
+  pointer-events: none;
+  box-shadow: var(--shadow-sm);
+}
+
+/* Glassmorphism Panels */
+.glass-panel {
+  background: rgba(234, 226, 211, 0.8);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.glass-dark {
+  background: rgba(43, 41, 38, 0.94);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  color: #f5f2eb;
+}
+
+/* Architectural Card Hover Effect */
+.arch-card {
+  transition: var(--transition-smooth);
+}
+
+.arch-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-md);
+}
+
+.arch-card:hover .arch-card-image {
+  transform: scale(1.05);
+}
+
+/* Mobile Bottom Navigation Bar */
+.mobile-only-tabbar {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .desktop-nav-links {
+    display: none !important;
+  }
+
+  header {
+    height: 60px !important;
+    padding: 0 20px !important;
+    background: rgba(234, 226, 211, 0.9) !important;
+    backdrop-filter: blur(14px) !important;
+    -webkit-backdrop-filter: blur(14px) !important;
+    border-bottom: 1px solid rgba(43, 41, 38, 0.08) !important;
+  }
+
+  .mobile-only-tabbar {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 64px;
+    background: rgba(43, 41, 38, 0.96);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    z-index: 150;
+    justify-content: space-around;
+    align-items: center;
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+    box-shadow: 0 -5px 25px rgba(0, 0, 0, 0.2);
+  }
+
+  .mobile-only-tabbar .tab-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    color: #a69f93;
+    text-decoration: none;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    flex: 1;
+    height: 100%;
+    transition: color 0.2s ease;
+  }
+
+  .mobile-only-tabbar .tab-item:active,
+  .mobile-only-tabbar .tab-item.active {
+    color: #ffffff;
+  }
+
+  .app-container main {
+    padding-bottom: 70px;
+  }
+
+  .floating-admin-dock {
+    bottom: 74px !important;
+    left: 14px !important;
+  }
+
+  #explore, #events, #about, #structures {
+    padding: 60px 20px !important;
+  }
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
