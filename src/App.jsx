@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import { HashRouter, Routes, Route, Link } from 'react-router-dom';
 import { ContentProvider, useContent } from './context/ContentContext';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
@@ -108,12 +108,12 @@ const HomePage = () => {
 export default function App() {
   return (
     <ContentProvider>
-      <BrowserRouter>
+      <HashRouter>
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/admin" element={<AdminPage />} />
         </Routes>
-      </BrowserRouter>
+      </HashRouter>
     </ContentProvider>
   );
 }
