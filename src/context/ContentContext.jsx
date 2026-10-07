@@ -88,6 +88,21 @@ export const ContentProvider = ({ children }) => {
       const saved = localStorage.getItem('a24_magazine_content');
       if (saved) {
         const parsed = JSON.parse(saved);
+        if (parsed.hero && parsed.hero.backgroundImage) {
+          parsed.hero.backgroundImage = parsed.hero.backgroundImage.replace(/^\//, '');
+        }
+        if (Array.isArray(parsed.projects)) {
+          parsed.projects = parsed.projects.map(p => ({
+            ...p,
+            image: p.image ? p.image.replace(/^\//, '') : 'project_arch_1.png'
+          }));
+        }
+        if (Array.isArray(parsed.events)) {
+          parsed.events = parsed.events.map(e => ({
+            ...e,
+            image: e.image ? e.image.replace(/^\//, '') : 'project_arch_1.png'
+          }));
+        }
         return { ...DEFAULT_CONTENT, ...parsed };
       }
     } catch (e) {
