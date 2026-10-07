@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useContent } from '../context/ContentContext';
 import { InlineText } from './InlineEdit';
 import { Plus, Trash2, ArrowRight, FileText, Download, X, ExternalLink, Filter } from 'lucide-react';
+import { getImageUrl } from '../utils/imageUtils';
 
 export const ExploreSection = () => {
   const { content, isEditMode, updateContent, showToast } = useContent();
@@ -69,7 +70,7 @@ export const ExploreSection = () => {
 
           <div style={{ display: 'flex', alignItems: 'center', gap: '16px', flexWrap: 'wrap' }}>
             {/* Category Filter Pills */}
-            <div style={{ display: 'flex', gap: '6px', backgroundColor: '#e7decb', padding: '4px', borderRadius: '24px', overflowX: 'auto' }}>
+            <div style={{ display: 'flex', gap: '6px', backgroundColor: '#e7decb', padding: '4px', borderRadius: '20px', overflowX: 'auto' }}>
               {['ALL', 'EXHIBITION', 'ESSAY', 'PUBLICATIONS'].map((cat) => (
                 <button
                   key={cat}
@@ -168,7 +169,7 @@ export const ExploreSection = () => {
                 }}
               >
                 <img
-                  src={proj.image || '/project_arch_1.png'}
+                  src={getImageUrl(proj.image, '/project_arch_1.png')}
                   alt={proj.title}
                   className="arch-card-image"
                   style={{
@@ -178,7 +179,7 @@ export const ExploreSection = () => {
                     transition: 'transform 0.5s cubic-bezier(0.16, 1, 0.3, 1)'
                   }}
                   onError={(e) => {
-                    e.target.src = '/project_arch_1.png';
+                    e.target.src = getImageUrl('/project_arch_1.png');
                   }}
                 />
                 <div style={{ position: 'absolute', top: '10px', left: '10px', backgroundColor: 'rgba(24,23,21,0.85)', backdropFilter: 'blur(4px)', color: '#ffffff', padding: '4px 10px', borderRadius: '4px', fontSize: '9px', fontFamily: 'var(--font-mono)', letterSpacing: '0.12em' }}>

@@ -16,7 +16,7 @@ export const DEFAULT_CONTENT = {
   hero: {
     headline: "A PLATFORM FOR\nARCHITECTURE, DESIGN AND IDEAS,\nEXPLORING BETTER WAYS TO LIVE,\nBUILD AND BE TOGETHER.",
     quote: "Architecture is not about building, but also about how we occupy a space.",
-    backgroundImage: "/hero_arch_bg.png",
+    backgroundImage: "hero_arch_bg.png",
     blurAmount: 3,
     overlayOpacity: 0.1,
     brightness: 100,
@@ -33,7 +33,7 @@ export const DEFAULT_CONTENT = {
       title: "Pavilion of Quiet Light",
       category: "EXHIBITION / KYOTO",
       year: "2026",
-      image: "/project_arch_1.png",
+      image: "project_arch_1.png",
       description: "A study on tactile raw concrete, timber slatted shadows, and natural ventilation in contemporary sanctuary design."
     },
     {
@@ -41,7 +41,7 @@ export const DEFAULT_CONTENT = {
       title: "Monastic Monoliths in High Altitude",
       category: "ESSAY / ALPS",
       year: "2026",
-      image: "/hero_arch_bg.png",
+      image: "hero_arch_bg.png",
       description: "How structural minimalism redefines human connection with dramatic alpine microclimates."
     }
   ],
@@ -52,7 +52,7 @@ export const DEFAULT_CONTENT = {
       date: "OCT 14, 2026",
       time: "18:00 CEST",
       location: "KYOTO ART CENTER & ONLINE STREAM",
-      image: "/project_arch_1.png",
+      image: "project_arch_1.png",
       description: "An international panel discussing raw materiality, passive light control, and community hub architectures.",
       link: "#rsvp"
     },
@@ -62,7 +62,7 @@ export const DEFAULT_CONTENT = {
       date: "NOV 02, 2026",
       time: "19:30 GMT",
       location: "ZURICH DESIGN MUSEUM",
-      image: "/hero_arch_bg.png",
+      image: "hero_arch_bg.png",
       description: "Exhibition walkthrough and book signing for the monograph on high-altitude structural minimalism.",
       link: "#rsvp"
     }

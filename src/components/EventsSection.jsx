@@ -2,6 +2,7 @@ import React from 'react';
 import { useContent } from '../context/ContentContext';
 import { InlineText } from './InlineEdit';
 import { Calendar, Clock, MapPin, ArrowUpRight, Plus, Trash2 } from 'lucide-react';
+import { getImageUrl } from '../utils/imageUtils';
 
 export const EventsSection = () => {
   const { content, isEditMode, updateContent, showToast } = useContent();
@@ -126,11 +127,11 @@ export const EventsSection = () => {
               {/* Event Image Container with enforced 16:9 ratio */}
               <div style={{ width: '100%', aspectRatio: '16 / 9', overflow: 'hidden', position: 'relative', backgroundColor: '#d8cebf' }}>
                 <img
-                  src={ev.image || '/project_arch_1.png'}
+                  src={getImageUrl(ev.image, '/project_arch_1.png')}
                   alt={ev.title}
                   className="arch-card-image"
                   style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.5s ease' }}
-                  onError={(e) => (e.target.src = '/project_arch_1.png')}
+                  onError={(e) => (e.target.src = getImageUrl('/project_arch_1.png'))}
                 />
                 <div style={{ position: 'absolute', top: '12px', left: '12px', backgroundColor: '#181715', color: '#ffffff', padding: '6px 12px', borderRadius: '4px', fontSize: '10px', fontFamily: 'var(--font-mono)', fontWeight: 700, letterSpacing: '0.08em' }}>
                   <InlineText path={`events.${idx}.date`} value={ev.date} />

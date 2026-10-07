@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { X, Crop, Check, ZoomIn, ZoomOut, RotateCcw, Image as ImageIcon } from 'lucide-react';
+import { getImageUrl } from '../utils/imageUtils';
 
 export const ImageCropperModal = ({ imageUrl, aspectRatio = 16 / 9, onCropSave, onClose }) => {
   const [zoom, setZoom] = useState(1);
@@ -20,7 +21,7 @@ export const ImageCropperModal = ({ imageUrl, aspectRatio = 16 / 9, onCropSave, 
     const ctx = canvas.getContext('2d');
     const img = new Image();
     img.crossOrigin = 'anonymous';
-    img.src = imageUrl;
+    img.src = getImageUrl(imageUrl);
 
     img.onload = () => {
       // Draw background fill
@@ -158,7 +159,7 @@ export const ImageCropperModal = ({ imageUrl, aspectRatio = 16 / 9, onCropSave, 
             }}
           >
             <img
-              src={imageUrl}
+              src={getImageUrl(imageUrl)}
               alt="Crop preview"
               style={{
                 width: '100%',
@@ -168,7 +169,7 @@ export const ImageCropperModal = ({ imageUrl, aspectRatio = 16 / 9, onCropSave, 
                 transition: 'transform 0.1s ease-out'
               }}
               onError={(e) => {
-                e.target.src = '/project_arch_1.png';
+                e.target.src = getImageUrl('/project_arch_1.png');
               }}
             />
           </div>

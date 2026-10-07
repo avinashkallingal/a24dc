@@ -2,6 +2,7 @@ import React from 'react';
 import { useContent } from '../context/ContentContext';
 import { InlineText } from './InlineEdit';
 import { Image as ImageIcon } from 'lucide-react';
+import { getImageUrl } from '../utils/imageUtils';
 
 export const Hero = () => {
   const { content, isEditMode, setIsAdminDrawerOpen } = useContent();
@@ -27,7 +28,7 @@ export const Hero = () => {
         style={{
           position: 'absolute',
           inset: 0,
-          backgroundImage: `url(${hero.backgroundImage || '/hero_arch_bg.png'})`,
+          backgroundImage: `url(${getImageUrl(hero.backgroundImage, '/hero_arch_bg.png')})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center 50%',
           filter: `blur(${hero.blurAmount ?? 3}px) brightness(${hero.brightness ?? 102}%) contrast(${hero.contrast ?? 98}%)`,

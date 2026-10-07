@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useContent } from '../context/ContentContext';
 import { InlineText } from './InlineEdit';
 import { Maximize2, FileText, ArrowRight, Layers, Cpu, Ruler, Info } from 'lucide-react';
+import { getImageUrl } from '../utils/imageUtils';
 
 export const StructureShowcase = () => {
   const [activeBlueprint, setActiveBlueprint] = useState(null);
@@ -13,7 +14,7 @@ export const StructureShowcase = () => {
       category: 'BRIDGE DESIGN & STRUCTURAL TENSION',
       span: '480 Metres',
       material: 'Post-Tensioned Concrete & High-Strength Steel Cables',
-      image: '/bridge_arch_1.png',
+      image: 'bridge_arch_1.png',
       blueprintSvg: 'bridge',
       specs: {
         scale: '1:500',
@@ -29,7 +30,7 @@ export const StructureShowcase = () => {
       category: 'CANTILEVERED ARCHITECTURE',
       span: '32 Metre Cantilever',
       material: 'Self-Consolidating Tactile Concrete & Cedar Slats',
-      image: '/building_arch_1.png',
+      image: 'building_arch_1.png',
       blueprintSvg: 'building',
       specs: {
         scale: '1:200',
@@ -103,7 +104,7 @@ export const StructureShowcase = () => {
               {/* Image & Blueprint Wireframe Container */}
               <div style={{ width: '100%', aspectRatio: '16 / 9', overflow: 'hidden', position: 'relative', backgroundColor: '#1e1c19' }}>
                 <img
-                  src={item.image}
+                  src={getImageUrl(item.image)}
                   alt={item.title}
                   className="arch-card-image"
                   style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.92, transition: 'transform 0.5s ease, opacity 0.5s ease' }}
@@ -245,7 +246,7 @@ export const StructureShowcase = () => {
             </div>
 
             <div style={{ width: '100%', aspectRatio: '16 / 9', borderRadius: '8px', overflow: 'hidden', marginBottom: '20px', position: 'relative' }}>
-              <img src={activeBlueprint.image} alt={activeBlueprint.title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+              <img src={getImageUrl(activeBlueprint.image)} alt={activeBlueprint.title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
             </div>
 
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '16px', backgroundColor: '#1f1d1a', padding: '18px', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.1)', fontFamily: 'var(--font-mono)', fontSize: '12px' }}>
